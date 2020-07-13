@@ -23,5 +23,4 @@ class MainActivity: AppCompatActivity() {
             startSearchActivity(this, editText.text.toString())
         }
     }
-
 }

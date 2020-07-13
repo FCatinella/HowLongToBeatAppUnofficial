@@ -48,6 +48,4 @@ class SearchActivityAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         }
     }
-
-
 }
