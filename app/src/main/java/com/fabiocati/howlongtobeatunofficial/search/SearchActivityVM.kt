@@ -25,10 +25,9 @@ class SearchActivityVM: ViewModel() {
 
     fun initViewModelFromBundle(bundle: Bundle?) {
         bundle ?: return
-        gameName = bundle.getString(Constants.GAME_NAME, "")
     }
 
-    fun searchGame() {
+    fun searchGame(gameName: String = "") {
         viewModelScope.launch(Dispatchers.IO) {
             val result = gameRepo.searchGame(gameName)
             _searchResults.postValue(result)
