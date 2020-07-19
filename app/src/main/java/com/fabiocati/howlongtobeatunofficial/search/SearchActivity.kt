@@ -1,13 +1,14 @@
 package com.fabiocati.howlongtobeatunofficial.search
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fabiocati.howlongtobeatunofficial.R
 import com.fabiocati.howlongtobeatunofficial.startDetailsActivity
 import kotlinx.android.synthetic.main.activity_search.*
@@ -25,6 +26,10 @@ class SearchActivity: AppCompatActivity() {
         } else {
             viewModel.initViewModelFromBundle(savedInstanceState)
         }
+        Glide.with(this)
+            .load("https://www.cyberludus.com/content/uploads/2018/04/godofwar_wall.jpg")
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(background)
         search_recycler_view.adapter = adapter
         adapter.setOnClickListener { gameId -> startDetailsActivity(this, gameId) }
         search_bar.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
