@@ -27,7 +27,7 @@ class SearchActivity: AppCompatActivity() {
             viewModel.initViewModelFromBundle(savedInstanceState)
         }
         Glide.with(this)
-            .load("https://www.cyberludus.com/content/uploads/2018/04/godofwar_wall.jpg")
+            .load(viewModel.getBackground())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(background)
         search_recycler_view.adapter = adapter

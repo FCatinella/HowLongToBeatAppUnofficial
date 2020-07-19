@@ -33,4 +33,8 @@ class SearchActivityVM: ViewModel() {
             _searchResults.postValue(result)
         }
     }
+
+    fun getBackground(): String {
+        return gameRepo.getBackground()
+    }
 }
