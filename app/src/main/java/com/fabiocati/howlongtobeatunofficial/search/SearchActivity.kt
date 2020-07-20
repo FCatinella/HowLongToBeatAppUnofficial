@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -32,16 +34,27 @@ class SearchActivity: AppCompatActivity() {
             .into(background)
         search_recycler_view.adapter = adapter
         adapter.setOnClickListener { gameId -> startDetailsActivity(this, gameId) }
-        search_bar.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (hasFocus && !animated) search_motion_layout.transitionToEnd()
-            animated = true
-        }
-        search_button.setOnClickListener {
-            val gameToSearch = search_bar.text.toString()
-            viewModel.searchGame(gameToSearch)
-            category_text_view.text = "Risultati"
-            closeKeyboard()
-            search_bar.clearFocus()
+        search_bar.apply {
+            this.findViewById<EditText>(R.id.search_edit_text)
+                .apply {
+                    onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                        if (hasFocus && !animated) search_motion_layout.transitionToEnd()
+                        animated = true
+                    }
+                    setOnEditorActionListener { _, actionId, _ ->
+                        return@setOnEditorActionListener when (actionId) {
+                            EditorInfo.IME_ACTION_SEARCH -> {
+                                val gameToSearch = this.text.toString()
+                                viewModel.searchGame(gameToSearch)
+                                category_text_view.text = "Risultati"
+                                closeKeyboard()
+                                clearFocus()
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+                }
         }
         observeViewModel()
         viewModel.searchGame()

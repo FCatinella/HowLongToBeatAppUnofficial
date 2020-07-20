@@ -21,20 +21,11 @@
             android:id="@+id/search_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintEnd_toStartOf="@id/search_button"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
-        <Constraint
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            motion:layout_constraintBottom_toBottomOf="@id/search_button"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="@id/search_bar" />
+            motion:layout_constraintStart_toStartOf="@id/title_textview"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/title_textview" />
+
         <Constraint
             android:id="@+id/category_text_view"
             android:layout_width="wrap_content"
@@ -68,6 +59,7 @@
             android:id="@+id/unofficial_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             motion:layout_constraintBottom_toTopOf="@id/search_bar"
             motion:layout_constraintEnd_toEndOf="@id/title_textview" />
         <Constraint
@@ -95,7 +87,7 @@
             android:layout_height="match_parent">
             <CustomAttribute
                 motion:attributeName="alpha"
-                motion:customFloatValue="0" />
+                motion:customFloatValue="0.1" />
         </Constraint>
     </ConstraintSet>
 </MotionScene>
