@@ -40,8 +40,11 @@ class SearchActivityAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.itemView.apply {
             Glide.with(this)
                 .load(game.imageUrl)
+                .override(400,400)
                 .into(game_cover_imageview)
-            game_mainTime_textview.text = game.mainStoryTime
+            game_mainTime_hours_textview.text = game.mainStoryTime
+            game_ExtraTime_hours_textview.text = game.mainStoryAndExtraTime
+            game_completionistTime_hours_textview.text = game.completionistTime
             game_title_textview.text = game.gameName
             setOnClickListener {
                 onClickFunction(game.gameId)
