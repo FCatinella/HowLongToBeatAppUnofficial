@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
@@ -14,7 +15,7 @@
             android:layout_height="match_parent">
             <CustomAttribute
                 motion:attributeName="alpha"
-                motion:customFloatValue="0.7"/>
+                motion:customFloatValue="0.7" />
         </Constraint>
 
         <Constraint
@@ -22,9 +23,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="@id/title_textview"
             motion:layout_constraintStart_toStartOf="@id/title_textview"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintEnd_toEndOf="@id/title_textview" />
+            motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/category_text_view"
@@ -37,6 +38,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            motion:layout_constraintEnd_toEndOf="@id/search_button"
+            motion:layout_constraintStart_toStartOf="@id/search_bar"
+            motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
+
+        <Constraint
+            android:id="@+id/no_game_found_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            motion:visibilityMode="ignore"
             motion:layout_constraintEnd_toEndOf="@id/search_button"
             motion:layout_constraintStart_toStartOf="@id/search_bar"
             motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
@@ -89,5 +100,15 @@
                 motion:attributeName="alpha"
                 motion:customFloatValue="0.1" />
         </Constraint>
+
+        <Constraint
+            android:id="@+id/no_game_found_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:visibilityMode="ignore"
+            motion:layout_constraintEnd_toEndOf="@id/search_button"
+            motion:layout_constraintStart_toStartOf="@id/search_bar"
+            motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
     </ConstraintSet>
 </MotionScene>

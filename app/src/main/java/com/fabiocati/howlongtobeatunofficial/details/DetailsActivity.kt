@@ -28,8 +28,17 @@ class DetailsActivity: AppCompatActivity() {
                 .load(game.imageUrl)
                 .into(game_cover_imageview)
             game_title_textview.text = game.gameName
+            game_producer_textview.text = game.developer
             game_description_textview.text = game.description
-            game_mainTime_textview.text = game.mainStoryTime
+            game_mainTime_hours_textview.text = game.mainStoryTime
+            game_ExtraTime_hours_textview.text = game.mainStoryAndExtraTime
+            game_completionistTime_hours_textview.text = game.completionistTime
+            eu_release_textview.text = game.releaseDateEU
+            na_release_textview.text = game.releaseDateNA
+            jp_release_textview.text = game.releaseDateJP
+        })
+        viewModel.isLoading.observe(this, Observer { isLoading ->
+
         })
     }
 }

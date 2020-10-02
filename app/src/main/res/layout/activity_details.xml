@@ -15,37 +15,234 @@
             <ImageView
                 android:id="@+id/game_cover_imageview"
                 android:layout_width="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:elevation="10dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/game_title_textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/game_title_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Game Title"
+            <View
+                android:id="@+id/background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/game_search_backgroud"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_cover_imageview" />
 
             <TextView
-                android:id="@+id/game_description_textview"
+                android:id="@+id/game_title_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="The Last of us - Remastered"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/background" />
+
+            <TextView
+                android:id="@+id/game_producer_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Naughty dog"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_title_textview" />
 
             <TextView
-                android:id="@+id/game_mainTime_textview"
-                android:layout_width="wrap_content"
+                android:id="@+id/game_description_textview"
+                android:layout_width="0dp"
+                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
-                android:text="0 Hours"
+                android:layout_marginHorizontal="16dp"
+                android:text="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/game_producer_textview"/>
+
+            <TextView
+                android:id="@+id/howLongToBeat_textview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/forque"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="HowLongToBeat:"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_description_textview" />
+
+            <TextView
+                android:id="@+id/game_mainTime_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Main story"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/game_ExtraTime_textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/howLongToBeat_textview" />
+
+            <TextView
+                android:id="@+id/game_mainTime_hours_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="23H"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/game_mainTime_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/game_mainTime_textview" />
+
+            <TextView
+                android:id="@+id/game_ExtraTime_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Main + Extra"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/game_completionistTime_textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/game_mainTime_textview" />
+
+            <TextView
+                android:id="@+id/game_ExtraTime_hours_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="23 Hours"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/game_ExtraTime_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/game_ExtraTime_textview" />
+
+            <TextView
+                android:id="@+id/game_completionistTime_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Complete"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/game_ExtraTime_textview" />
+
+            <TextView
+                android:id="@+id/game_completionistTime_hours_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="23H"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/game_completionistTime_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/game_completionistTime_textview" />
+
+            <TextView
+                android:id="@+id/release_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Release:"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/game_completionistTime_textview" />
+
+            <ImageView
+                android:id="@+id/europe_flag"
+                android:src="@drawable/eu_flag"
+                android:layout_marginTop="4dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="@id/eu_release_textview"
+                app:layout_constraintEnd_toEndOf="@id/eu_release_textview"
+                app:layout_constraintTop_toBottomOf="@id/release_textview"
+                app:layout_constraintBottom_toTopOf="@id/eu_release_textview"/>
+
+            <TextView
+                android:id="@+id/eu_release_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/na_release_textview"
+                android:layout_marginLeft="16dp"
+                android:text="23 March 2020"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/background"
+                app:layout_constraintTop_toBottomOf="@id/europe_flag" />
+
+            <ImageView
+                android:id="@+id/nord_america_flag"
+                android:src="@drawable/na_flag"
+                android:layout_marginTop="4dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="@id/na_release_textview"
+                app:layout_constraintEnd_toEndOf="@id/na_release_textview"
+                app:layout_constraintTop_toBottomOf="@id/release_textview"
+                app:layout_constraintBottom_toTopOf="@id/na_release_textview"/>
+
+            <TextView
+                android:id="@+id/na_release_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/eu_release_textview"
+                app:layout_constraintEnd_toStartOf="@id/jp_release_textview"
+                android:text="23 March 2021"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/background"
+                app:layout_constraintTop_toBottomOf="@id/nord_america_flag" />
+            <ImageView
+                android:id="@+id/japan_flag"
+                android:src="@drawable/jp_flag"
+                android:layout_marginTop="4dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:layout_constraintStart_toStartOf="@id/jp_release_textview"
+                app:layout_constraintEnd_toEndOf="@id/jp_release_textview"
+                app:layout_constraintTop_toBottomOf="@id/release_textview"
+                app:layout_constraintBottom_toTopOf="@id/jp_release_textview"/>
+
+            <TextView
+                android:id="@+id/jp_release_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/na_release_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="16dp"
+                android:text="23 March 2020"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/background"
+                app:layout_constraintTop_toBottomOf="@id/japan_flag" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

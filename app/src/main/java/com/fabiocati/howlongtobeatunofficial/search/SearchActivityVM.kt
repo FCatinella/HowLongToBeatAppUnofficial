@@ -11,14 +11,19 @@ import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SearchActivityVM: ViewModel() {
+class SearchActivityVM : ViewModel() {
     private val gameRepo = GameRepository.getInstance()
     private var gameName: String = ""
+
+    var isLoading: LiveData<Boolean>
+    var _isLoading: MutableLiveData<Boolean>
 
     private var _searchResults: MutableLiveData<ArrayList<GameSearchModel>>
     var searchResults: LiveData<ArrayList<GameSearchModel>>
 
     init {
+        _isLoading = MutableLiveData(false)
+        isLoading = _isLoading
         _searchResults = MutableLiveData()
         searchResults = _searchResults
     }
@@ -29,8 +34,10 @@ class SearchActivityVM: ViewModel() {
 
     fun searchGame(gameName: String = "") {
         viewModelScope.launch(Dispatchers.IO) {
+            _isLoading.postValue(true)
             val result = gameRepo.searchGame(gameName)
             _searchResults.postValue(result)
+            _isLoading.postValue(false)
         }
     }
 

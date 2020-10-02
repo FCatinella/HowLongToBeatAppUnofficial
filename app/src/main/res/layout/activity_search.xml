@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_search_scene">
 
+    <include
+        android:id="@+id/no_game_found_layout"
+        android:visibility="invisible"
+        layout="@layout/layout_no_game_found" />
+
     <ImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
@@ -51,15 +56,16 @@
         app:layout_constraintEnd_toEndOf="@id/title_textview" />
 
 
-    <include layout="@layout/element_search_bar"
+    <include
+        android:id="@+id/search_bar"
+        layout="@layout/element_search_bar"
         android:layout_width="0dp"
-        android:layout_marginTop="32dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="8dp"
-        android:id="@+id/search_bar"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/about_textview"
@@ -73,10 +79,10 @@
         android:id="@+id/category_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Popular"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/search_bar"
         app:layout_constraintTop_toBottomOf="@id/search_bar" />
 

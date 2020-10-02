@@ -1,13 +1,11 @@
 package com.fabiocati.howlongtobeatunofficial.search
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,7 +49,7 @@ class SearchActivity: AppCompatActivity() {
                             EditorInfo.IME_ACTION_SEARCH -> {
                                 val gameToSearch = this.text.toString()
                                 viewModel.searchGame(gameToSearch)
-                                category_text_view.text = "Risultati"
+                                category_text_view.text = context.getString(R.string.results)
                                 closeKeyboard()
                                 clearFocus()
                                 true
@@ -78,6 +76,11 @@ class SearchActivity: AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.searchResults.observe(this, Observer { gameList ->
             adapter.setDataSet(gameList)
+            if(gameList.isEmpty()) {
+                no_game_found_layout.visibility = View.VISIBLE
+            } else {
+                no_game_found_layout.visibility = View.INVISIBLE
+            }
         })
     }
 

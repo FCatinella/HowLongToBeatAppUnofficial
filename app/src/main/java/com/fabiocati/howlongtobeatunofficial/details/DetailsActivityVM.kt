@@ -15,28 +15,34 @@ import kotlinx.coroutines.launch
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
-class DetailsActivityVM: ViewModel() {
+class DetailsActivityVM : ViewModel() {
 
-    private var gameId : Int = 0
-    private lateinit var _game : MutableLiveData<GameDetailsModel>
+    private var gameId: Int = 0
+    private lateinit var _game: MutableLiveData<GameDetailsModel>
     lateinit var game: LiveData<GameDetailsModel>
+    var isLoading: LiveData<Boolean>
+    var _isLoading: MutableLiveData<Boolean>
     var gameRepo = GameRepository.getInstance()
 
     init {
+        _isLoading = MutableLiveData(false)
+        isLoading = _isLoading
         _game = MutableLiveData()
         game = _game
     }
 
 
-    fun initFromBundle(bundle: Bundle?){
+    fun initFromBundle(bundle: Bundle?) {
         bundle ?: return
         gameId = bundle.getInt(Constants.GAME_ID)
     }
 
-    fun getGame(){
+    fun getGame() {
         viewModelScope.launch(Dispatchers.IO) {
+            _isLoading.postValue(true)
             val game = gameRepo.getGame(gameId)
             _game.postValue(game)
+            _isLoading.postValue(false)
         }
     }
 }
