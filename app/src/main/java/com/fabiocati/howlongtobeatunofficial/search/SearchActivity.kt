@@ -15,7 +15,7 @@ import com.fabiocati.howlongtobeatunofficial.R
 import com.fabiocati.howlongtobeatunofficial.startDetailsActivity
 import kotlinx.android.synthetic.main.activity_search.*
 
-class SearchActivity: AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
     var viewModel = SearchActivityVM()
     var adapter = SearchActivityAdapter()
     private var animated = false
@@ -76,19 +76,28 @@ class SearchActivity: AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.searchResults.observe(this, Observer { gameList ->
             adapter.setDataSet(gameList)
-            if(gameList.isEmpty()) {
+            if (gameList.isEmpty() && !this.isLoading()) {
                 no_game_found_layout.visibility = View.VISIBLE
             } else {
                 no_game_found_layout.visibility = View.INVISIBLE
             }
+        })
+        viewModel.isLoading.observe(this, Observer { isLoading ->
+            if (isLoading) loading_layout.visibility = View.VISIBLE
+            else loading_layout.visibility = View.INVISIBLE
         })
     }
 
     private fun closeKeyboard() {
         val view = this.currentFocus
         if (view != null) {
-            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
+    }
+
+    private fun isLoading() : Boolean{
+        return viewModel.isLoading.value ?: return false;
     }
 }

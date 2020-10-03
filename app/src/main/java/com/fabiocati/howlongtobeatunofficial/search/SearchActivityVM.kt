@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fabiocati.howlongtobeatunofficial.Constants
 import com.fabiocati.howlongtobeatunofficial.GameRepository
 import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SearchActivityVM : ViewModel() {
@@ -16,7 +16,7 @@ class SearchActivityVM : ViewModel() {
     private var gameName: String = ""
 
     var isLoading: LiveData<Boolean>
-    var _isLoading: MutableLiveData<Boolean>
+    private var _isLoading: MutableLiveData<Boolean>
 
     private var _searchResults: MutableLiveData<ArrayList<GameSearchModel>>
     var searchResults: LiveData<ArrayList<GameSearchModel>>
@@ -35,9 +35,11 @@ class SearchActivityVM : ViewModel() {
     fun searchGame(gameName: String = "") {
         viewModelScope.launch(Dispatchers.IO) {
             _isLoading.postValue(true)
+            _searchResults.postValue(ArrayList())
             val result = gameRepo.searchGame(gameName)
-            _searchResults.postValue(result)
+            delay(1000)
             _isLoading.postValue(false)
+            _searchResults.postValue(result)
         }
     }
 

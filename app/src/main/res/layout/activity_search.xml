@@ -11,6 +11,11 @@
         android:visibility="invisible"
         layout="@layout/layout_no_game_found" />
 
+    <include
+        android:id="@+id/loading_layout"
+        android:visibility="invisible"
+        layout="@layout/layout_loading"/>
+
     <ImageView
         android:id="@+id/background"
         android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 package com.fabiocati.howlongtobeatunofficial.retrofit
 
-import okhttp3.ResponseBody
 import org.jsoup.nodes.Document
 import retrofit2.Call
 import retrofit2.http.*

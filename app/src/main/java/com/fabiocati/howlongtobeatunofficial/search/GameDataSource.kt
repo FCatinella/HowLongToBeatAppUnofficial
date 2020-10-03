@@ -20,7 +20,7 @@ class GameDataSource {
         return array
     }
 
-    fun parseSearchPage(document: Document): ArrayList<GameSearchModel> {
+    private fun parseSearchPage(document: Document): ArrayList<GameSearchModel> {
         val array = ArrayList<GameSearchModel>()
         val site = document.body()
         val gameElements = site.getElementsByClass("back_darkish")
@@ -38,7 +38,7 @@ class GameDataSource {
         return array
     }
 
-    fun getId(element: Element): Int {
+    private fun getId(element: Element): Int {
         val idString = element.attr("href")
         try {
             return idString.substringAfter("id=")

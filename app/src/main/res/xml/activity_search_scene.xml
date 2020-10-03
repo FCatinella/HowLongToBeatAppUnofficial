@@ -51,6 +51,17 @@
             motion:layout_constraintEnd_toEndOf="@id/search_button"
             motion:layout_constraintStart_toStartOf="@id/search_bar"
             motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
+
+        <Constraint
+            android:id="@+id/loading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            motion:visibilityMode="ignore"
+            motion:layout_constraintEnd_toEndOf="@id/search_button"
+            motion:layout_constraintStart_toStartOf="@id/search_bar"
+            motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
+
         <Constraint
             android:id="@+id/site_textview"
             android:layout_width="wrap_content"
@@ -103,6 +114,16 @@
 
         <Constraint
             android:id="@+id/no_game_found_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:visibilityMode="ignore"
+            motion:layout_constraintEnd_toEndOf="@id/search_button"
+            motion:layout_constraintStart_toStartOf="@id/search_bar"
+            motion:layout_constraintTop_toBottomOf="@id/category_text_view" />
+
+        <Constraint
+            android:id="@+id/loading_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
