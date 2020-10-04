@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fabiocati.howlongtobeatunofficial.R
@@ -32,11 +33,11 @@ class SearchActivity : AppCompatActivity() {
             .load(viewModel.getBackground())
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(background)
-        search_recycler_view.apply {
+        val searchRecyclerView = findViewById<RecyclerView>(R.id.search_recycler_view).apply {
             layoutManager = GridLayoutManager(this@SearchActivity, 2)
         }
-        search_recycler_view.adapter = adapter
-        adapter.setOnClickListener { gameId -> startDetailsActivity(this, gameId) }
+        searchRecyclerView.adapter = adapter
+        adapter.setOnClickListener { gameId, view -> startDetailsActivity(this, gameId, view) }
         search_bar.apply {
             this.findViewById<EditText>(R.id.search_edit_text)
                 .apply {

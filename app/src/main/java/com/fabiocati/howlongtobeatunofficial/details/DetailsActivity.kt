@@ -1,9 +1,15 @@
 package com.fabiocati.howlongtobeatunofficial.details
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.fabiocati.howlongtobeatunofficial.R
 import kotlinx.android.synthetic.main.activity_details.*
 
@@ -13,6 +19,7 @@ class DetailsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+        supportPostponeEnterTransition()
         if(intent != null){
             viewModel.initFromBundle(intent.extras)
         } else {
@@ -24,9 +31,32 @@ class DetailsActivity: AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.game.observe(this, Observer { game ->
+            val gameCoverImageView = findViewById<ImageView>(R.id.game_cover_imageview)
+            gameCoverImageView.transitionName = "game_cover"
             Glide.with(this)
                 .load(game.imageUrl)
-                .into(game_cover_imageview)
+                .addListener(object : RequestListener<Drawable> {
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        supportStartPostponedEnterTransition()
+                        return false
+                    }
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+                })
+                .into(gameCoverImageView)
             game_title_textview.text = game.gameName
             game_producer_textview.text = game.developer
             game_description_textview.text = game.description
