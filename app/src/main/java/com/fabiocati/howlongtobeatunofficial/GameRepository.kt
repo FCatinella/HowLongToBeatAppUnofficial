@@ -22,12 +22,14 @@ class GameRepository private constructor() {
         }
 
         private val gameBackLink = arrayOf(
-            "https://www.cyberludus.com/content/uploads/2018/04/godofwar_wall.jpg",
-            "https://d.newsweek.com/en/full/1304688/claire-leon-vs-first-resident-evil-2-remake.jpg?w=1600&h=900&q=88&f=d569267390d26951a3b737d747184815",
-            "https://www.playstationzone.it/wp-content/uploads/2020/06/The-Last-of-Us%E2%84%A2-Parte-II_20200619182952.jpg",
-            "https://ae01.alicdn.com/kf/HTB1gOGdaizxK1RkSnaVq6xn9VXa2/Diamond-painting-Cartoon-The-Legend-Of-Zelda-Breath-Of-The-Wild-Wall-Art-Picture-Art-Print.jpg_640x640.jpg",
-            "https://www.cyberludus.com/content/uploads/2018/11/750703.jpg",
-            "https://images3.alphacoders.com/104/thumb-1920-1040112.png"
+            "https://www.cyberludus.com/content/uploads/2018/04/godofwar_wall.jpg", //God of war
+            "https://www.optimagazine.com/wp-content/uploads/2019/02/resident-evil-2-remake-recensione.jpg", // RE 2 remake
+            "https://gametimes.com.br/wp-content/uploads/2020/04/wh3h15zelyg41-scaled.jpg", //Tlou 2
+            "https://images.alphacoders.com/789/thumb-1920-789452.jpg", //Breath of the wild
+            "https://www.cyberludus.com/content/uploads/2018/11/750703.jpg", //Rdd2
+            "https://images.pushsquare.com/96299803f0808/demons-souls-ps5.original.jpg", // Demon's souls
+            "https://images.hdqwalls.com/download/cyberpunk-2077-johnny-silverhand-4k-lt-3840x2160.jpg", // Cyberpunk 2077
+            "https://cs10.pikabu.ru/post_img/big/2020/04/11/2/1586567698133226382.jpg" // FFVII remake
         )
     }
 
