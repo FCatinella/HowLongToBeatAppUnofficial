@@ -1,7 +1,6 @@
 package com.fabiocati.howlongtobeatunofficial.details
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,28 +8,21 @@ import androidx.lifecycle.viewModelScope
 import com.fabiocati.howlongtobeatunofficial.Constants
 import com.fabiocati.howlongtobeatunofficial.GameRepository
 import com.fabiocati.howlongtobeatunofficial.model.GameDetailsModel
-import com.fabiocati.howlongtobeatunofficial.retrofit.RetrofitManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
+import javax.inject.Inject
 
-class DetailsActivityVM : ViewModel() {
+@HiltViewModel
+class DetailsActivityVM @Inject constructor(
+    private val gameRepo: GameRepository
+) : ViewModel() {
 
     private var gameId: Int = 0
-    private lateinit var _game: MutableLiveData<GameDetailsModel>
-    lateinit var game: LiveData<GameDetailsModel>
-    var isLoading: LiveData<Boolean>
-    var _isLoading: MutableLiveData<Boolean>
-    var gameRepo = GameRepository.getInstance()
-
-    init {
-        _isLoading = MutableLiveData(false)
-        isLoading = _isLoading
-        _game = MutableLiveData()
-        game = _game
-    }
-
+    private val _game: MutableLiveData<GameDetailsModel> = MutableLiveData()
+    val game: LiveData<GameDetailsModel> = _game
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun initFromBundle(bundle: Bundle?) {
         bundle ?: return

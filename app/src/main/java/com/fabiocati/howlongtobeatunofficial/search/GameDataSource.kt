@@ -1,15 +1,19 @@
 package com.fabiocati.howlongtobeatunofficial.search
 
+import com.fabiocati.howlongtobeatunofficial.Constants.BASE_URL
 import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
-import com.fabiocati.howlongtobeatunofficial.retrofit.RetrofitManager
+import com.fabiocati.howlongtobeatunofficial.retrofit.HLTBService
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import javax.inject.Inject
 
-class GameDataSource {
+class GameDataSource @Inject constructor(
+    private val htlbService: HLTBService
+) {
     fun searchGamesFromName(gameName: String): ArrayList<GameSearchModel> {
         var array = ArrayList<GameSearchModel>()
         try {
-            val request = RetrofitManager.getHTLBService()
+            val request = htlbService
                 .getGameList(gameName)
             val data = request.execute()
             val body = data.body()
@@ -27,7 +31,7 @@ class GameDataSource {
         for (gameElement in gameElements) {
             val game = GameSearchModel()
             val image = gameElement.getElementsByAttribute("src")[0]
-            game.imageUrl = image.attr("src")
+            game.imageUrl = "${BASE_URL}${image.attr("src")}"
             val gameDetailsElement = gameElement.getElementsByClass("search_list_details")[0]
             val details = gameDetailsElement.getElementsByClass("shadow_text")[0].child(0)
             getGameTimes(game, gameDetailsElement.child(1))
@@ -52,15 +56,15 @@ class GameDataSource {
         val children = element.children()[0].children()
         for (i in 0 until children.size step 2) {
             val child = children[i]
-            when(child.text()){
+            when (child.text()) {
                 "Main Story" -> {
-                    game.mainStoryTime = children[i+1].text()
+                    game.mainStoryTime = children[i + 1].text()
                 }
                 "Main + Extra" -> {
-                    game.mainStoryAndExtraTime = children[i+1].text()
+                    game.mainStoryAndExtraTime = children[i + 1].text()
                 }
                 "Completionist" -> {
-                    game.completionistTime = children[i+1].text()
+                    game.completionistTime = children[i + 1].text()
                 }
             }
         }

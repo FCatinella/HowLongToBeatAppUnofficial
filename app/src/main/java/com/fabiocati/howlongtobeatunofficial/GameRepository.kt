@@ -4,23 +4,17 @@ import com.fabiocati.howlongtobeatunofficial.details.GameDetailsDataSource
 import com.fabiocati.howlongtobeatunofficial.model.GameDetailsModel
 import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
 import com.fabiocati.howlongtobeatunofficial.search.GameDataSource
+import javax.inject.Inject
 import kotlin.random.Random
 
-class GameRepository private constructor() {
+class GameRepository @Inject constructor(
+    private val gameSearchDataSource: GameDataSource,
+    private val gameDetailsDataSource: GameDetailsDataSource
+) {
+
+    private val cacheMap = HashMap<Int, GameDetailsModel>()
 
     companion object {
-        private var instance: GameRepository? = null
-        private var cacheMap = HashMap<Int, GameDetailsModel>()
-        private val gameDetailsDataSource = GameDetailsDataSource()
-        private val gameSearchDataSource = GameDataSource()
-
-        fun getInstance(): GameRepository {
-            if (instance == null) {
-                instance = GameRepository()
-            }
-            return instance!!
-        }
-
         private val gameBackLink = arrayOf(
             "https://www.cyberludus.com/content/uploads/2018/04/godofwar_wall.jpg", //God of war
             "https://www.optimagazine.com/wp-content/uploads/2019/02/resident-evil-2-remake-recensione.jpg", // RE 2 remake

@@ -1,17 +1,21 @@
 package com.fabiocati.howlongtobeatunofficial.details
 
+import com.fabiocati.howlongtobeatunofficial.Constants.BASE_URL
 import com.fabiocati.howlongtobeatunofficial.model.GameDetailsModel
-import com.fabiocati.howlongtobeatunofficial.retrofit.RetrofitManager
+import com.fabiocati.howlongtobeatunofficial.retrofit.HLTBService
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import javax.inject.Inject
 
-class GameDetailsDataSource {
+class GameDetailsDataSource @Inject constructor(
+    private val htlbService: HLTBService
+) {
 
     private fun parsePageDetails(document: Document): GameDetailsModel {
         val site = document.body()
         val game = GameDetailsModel()
         game.gameName = getName(site)
-        game.imageUrl = getImageUrl(site)
+        game.imageUrl = "${BASE_URL}${getImageUrl(site)}"
         getGameDescription(game, site)
         getTimes(game, site)
         return game
@@ -94,7 +98,7 @@ class GameDetailsDataSource {
     fun getGameDetailsFromId(id: Int): GameDetailsModel {
         var game = GameDetailsModel()
         try {
-            val request = RetrofitManager.getHTLBService()
+            val request = htlbService
                 .getGameDetails(id)
             val data = request.execute() //blocking
             val body = data.body()

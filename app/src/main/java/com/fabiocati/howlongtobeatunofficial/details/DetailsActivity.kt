@@ -5,22 +5,27 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.fabiocati.howlongtobeatunofficial.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
 
-class DetailsActivity: AppCompatActivity() {
-    private val viewModel = DetailsActivityVM()
+@AndroidEntryPoint
+class DetailsActivity : AppCompatActivity() {
+    private val viewModel: DetailsActivityVM by lazy {
+        ViewModelProvider(this)[DetailsActivityVM::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         supportPostponeEnterTransition()
-        if(intent != null){
+        if (intent != null) {
             viewModel.initFromBundle(intent.extras)
         } else {
             viewModel.initFromBundle(savedInstanceState)
@@ -53,6 +58,7 @@ class DetailsActivity: AppCompatActivity() {
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
+                        supportStartPostponedEnterTransition()
                         return false
                     }
                 })

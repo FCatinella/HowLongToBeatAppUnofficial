@@ -8,16 +8,19 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fabiocati.howlongtobeatunofficial.R
 import com.fabiocati.howlongtobeatunofficial.startDetailsActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_search.*
 
+@AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
-    var viewModel = SearchActivityVM()
+    private val viewModel by lazy { ViewModelProvider(this)[SearchActivityVM::class.java] }
     var adapter = SearchActivityAdapter()
     private var animated = false
 
@@ -98,7 +101,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun isLoading() : Boolean{
+    private fun isLoading(): Boolean {
         return viewModel.isLoading.value ?: return false;
     }
 }

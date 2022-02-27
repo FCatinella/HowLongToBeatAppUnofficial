@@ -1,3 +1,7 @@
 package com.fabiocati.howlongtobeatunofficial
 
-class HowLongToBeatApplication {}
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class HowLongToBeatApplication : Application()

@@ -7,26 +7,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fabiocati.howlongtobeatunofficial.GameRepository
 import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchActivityVM : ViewModel() {
-    private val gameRepo = GameRepository.getInstance()
+@HiltViewModel
+class SearchActivityVM @Inject constructor(
+    private val gameRepo: GameRepository
+) : ViewModel() {
+
     private var gameName: String = ""
+    private var _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    var isLoading: LiveData<Boolean> = _isLoading
 
-    var isLoading: LiveData<Boolean>
-    private var _isLoading: MutableLiveData<Boolean>
-
-    private var _searchResults: MutableLiveData<ArrayList<GameSearchModel>>
-    var searchResults: LiveData<ArrayList<GameSearchModel>>
-
-    init {
-        _isLoading = MutableLiveData(false)
-        isLoading = _isLoading
-        _searchResults = MutableLiveData()
-        searchResults = _searchResults
-    }
+    private var _searchResults: MutableLiveData<ArrayList<GameSearchModel>> = MutableLiveData()
+    var searchResults: LiveData<ArrayList<GameSearchModel>> = _searchResults
 
     fun initViewModelFromBundle(bundle: Bundle?) {
         bundle ?: return
