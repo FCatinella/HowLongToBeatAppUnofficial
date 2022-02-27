@@ -40,7 +40,7 @@ class SearchActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(this@SearchActivity, 2)
         }
         searchRecyclerView.adapter = adapter
-        adapter.setOnClickListener { gameId, view -> startDetailsActivity(this, gameId, view) }
+        //adapter.setOnClickListener { gameId, view -> startDetailsActivity(this, gameId, view) }
         search_bar.apply {
             this.findViewById<EditText>(R.id.search_edit_text)
                 .apply {
