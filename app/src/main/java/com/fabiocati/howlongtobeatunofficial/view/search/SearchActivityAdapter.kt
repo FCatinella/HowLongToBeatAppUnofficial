@@ -1,4 +1,4 @@
-package com.fabiocati.howlongtobeatunofficial.search
+package com.fabiocati.howlongtobeatunofficial.view.search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fabiocati.howlongtobeatunofficial.R
-import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
+import com.fabiocati.howlongtobeatunofficial.data.model.GameSearchModel
 
 class SearchActivityAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var dataSet = ArrayList<GameSearchModel>()

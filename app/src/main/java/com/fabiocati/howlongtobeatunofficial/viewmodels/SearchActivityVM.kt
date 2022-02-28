@@ -1,12 +1,12 @@
-package com.fabiocati.howlongtobeatunofficial.search
+package com.fabiocati.howlongtobeatunofficial.viewmodels
 
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fabiocati.howlongtobeatunofficial.GameRepository
-import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
+import com.fabiocati.howlongtobeatunofficial.data.repositories.GameRepository
+import com.fabiocati.howlongtobeatunofficial.data.model.GameSearchModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

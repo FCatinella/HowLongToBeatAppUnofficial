@@ -1,4 +1,4 @@
-package com.fabiocati.howlongtobeatunofficial.main.view
+package com.fabiocati.howlongtobeatunofficial.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

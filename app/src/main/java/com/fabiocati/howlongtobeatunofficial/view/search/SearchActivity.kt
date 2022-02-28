@@ -1,4 +1,4 @@
-package com.fabiocati.howlongtobeatunofficial.search
+package com.fabiocati.howlongtobeatunofficial.view.search
 
 import android.content.Context
 import android.os.Bundle
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fabiocati.howlongtobeatunofficial.R
-import com.fabiocati.howlongtobeatunofficial.startDetailsActivity
+import com.fabiocati.howlongtobeatunofficial.viewmodels.SearchActivityVM
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_search.*
 

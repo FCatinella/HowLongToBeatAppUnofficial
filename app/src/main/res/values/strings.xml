@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">How Long To Beat Unofficial</string>
     <string name="results">Results</string>
+    <string name="main_story">Main story</string>
+    <string name="main_extra">Main + Extra</string>
+    <string name="complete">Complete</string>
 </resources>

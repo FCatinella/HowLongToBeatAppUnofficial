@@ -1,7 +1,7 @@
-package com.fabiocati.howlongtobeatunofficial.details
+package com.fabiocati.howlongtobeatunofficial.data.datasources
 
 import com.fabiocati.howlongtobeatunofficial.Constants.BASE_URL
-import com.fabiocati.howlongtobeatunofficial.model.GameDetailsModel
+import com.fabiocati.howlongtobeatunofficial.data.model.GameDetailsModel
 import com.fabiocati.howlongtobeatunofficial.retrofit.HLTBService
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element

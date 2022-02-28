@@ -1,4 +1,4 @@
-package com.fabiocati.howlongtobeatunofficial.model
+package com.fabiocati.howlongtobeatunofficial.data.model
 
 
 class GameSearchModel {

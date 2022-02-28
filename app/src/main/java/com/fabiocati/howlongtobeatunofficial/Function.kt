@@ -2,13 +2,10 @@ package com.fabiocati.howlongtobeatunofficial
 
 import android.app.Activity
 import android.app.ActivityOptions
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.ImageView
-import com.fabiocati.howlongtobeatunofficial.details.DetailsActivity
-import com.fabiocati.howlongtobeatunofficial.search.SearchActivity
+import com.fabiocati.howlongtobeatunofficial.view.details.DetailsActivity
+import com.fabiocati.howlongtobeatunofficial.view.search.SearchActivity
 
 fun startDetailsActivity(activity: Activity, gameId: Int, gameCoverView: View) {
     val intent = Intent(activity, DetailsActivity::class.java)

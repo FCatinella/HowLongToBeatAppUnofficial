@@ -1,14 +1,13 @@
-package com.fabiocati.howlongtobeatunofficial
+package com.fabiocati.howlongtobeatunofficial.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.lifecycle.lifecycleScope
-import com.fabiocati.howlongtobeatunofficial.search.SearchActivity
+import com.fabiocati.howlongtobeatunofficial.R
+import com.fabiocati.howlongtobeatunofficial.view.search.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

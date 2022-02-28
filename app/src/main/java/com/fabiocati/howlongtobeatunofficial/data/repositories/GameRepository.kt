@@ -1,9 +1,10 @@
-package com.fabiocati.howlongtobeatunofficial
+package com.fabiocati.howlongtobeatunofficial.data.repositories
 
-import com.fabiocati.howlongtobeatunofficial.details.GameDetailsDataSource
-import com.fabiocati.howlongtobeatunofficial.model.GameDetailsModel
-import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
-import com.fabiocati.howlongtobeatunofficial.search.GameDataSource
+import com.fabiocati.howlongtobeatunofficial.Constants
+import com.fabiocati.howlongtobeatunofficial.data.datasources.GameDetailsDataSource
+import com.fabiocati.howlongtobeatunofficial.data.model.GameDetailsModel
+import com.fabiocati.howlongtobeatunofficial.data.model.GameSearchModel
+import com.fabiocati.howlongtobeatunofficial.data.datasources.GameDataSource
 import javax.inject.Inject
 import kotlin.random.Random
 

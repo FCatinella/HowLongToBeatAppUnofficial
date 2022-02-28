@@ -1,7 +1,7 @@
-package com.fabiocati.howlongtobeatunofficial.search
+package com.fabiocati.howlongtobeatunofficial.data.datasources
 
 import com.fabiocati.howlongtobeatunofficial.Constants.BASE_URL
-import com.fabiocati.howlongtobeatunofficial.model.GameSearchModel
+import com.fabiocati.howlongtobeatunofficial.data.model.GameSearchModel
 import com.fabiocati.howlongtobeatunofficial.retrofit.HLTBService
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -29,15 +29,20 @@ class GameDataSource @Inject constructor(
         val site = document.body()
         val gameElements = site.getElementsByClass("back_darkish")
         for (gameElement in gameElements) {
-            val game = GameSearchModel()
-            val image = gameElement.getElementsByAttribute("src")[0]
-            game.imageUrl = "${BASE_URL}${image.attr("src")}"
-            val gameDetailsElement = gameElement.getElementsByClass("search_list_details")[0]
-            val details = gameDetailsElement.getElementsByClass("shadow_text")[0].child(0)
-            getGameTimes(game, gameDetailsElement.child(1))
-            game.gameName = details.text()
-            game.gameId = getId(details)
-            array.add(game)
+            try{
+                val game = GameSearchModel()
+                val image = gameElement.getElementsByAttribute("src")[0]
+                game.imageUrl = "${BASE_URL}${image.attr("src")}"
+                val gameDetailsElement = gameElement.getElementsByClass("search_list_details")[0]
+                val details = gameDetailsElement.getElementsByClass("shadow_text")[0].child(0)
+                getGameTimes(game, gameDetailsElement.child(1))
+                game.gameName = details.text()
+                game.gameId = getId(details)
+                array.add(game)
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+
         }
         return array
     }
@@ -53,6 +58,7 @@ class GameDataSource @Inject constructor(
     }
 
     private fun getGameTimes(game: GameSearchModel, element: Element) {
+        if(element.childrenSize() == 0) return
         val children = element.children()[0].children()
         for (i in 0 until children.size step 2) {
             val child = children[i]

@@ -1,4 +1,4 @@
-package com.fabiocati.howlongtobeatunofficial.details
+package com.fabiocati.howlongtobeatunofficial.view.details
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.fabiocati.howlongtobeatunofficial.R
+import com.fabiocati.howlongtobeatunofficial.viewmodels.DetailsActivityVM
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_details.*
 
